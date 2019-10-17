@@ -33,10 +33,15 @@ export default StyleSheet.create({
     marginBottom: 20
   },
   buttonStyles:{
+    alignItems: 'flex-start',
     width: 200,
     backgroundColor: 'orange',
     borderRadius: 5,
     marginBottom: 15
+  },
+  imageStyles:{
+    resizeMode: 'contain',
+    tintColor: 'green'
   },
   startButton:{
     width: '75%',
@@ -44,6 +49,7 @@ export default StyleSheet.create({
     backgroundColor: 'lightgreen'
   },
   buttonText:{
+    textAlign: 'center',
     color: Color.brightText
   },
   startButtonText:{
