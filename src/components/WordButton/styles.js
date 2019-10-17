@@ -13,7 +13,18 @@ export default StyleSheet.create({
     borderRadius: 5,
     ...AppStyle.shadow
   },
+  container:{
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  imageStyles:{
+    marginHorizontal: 10,
+    width: 30,
+    height: 30
+  },
   textStyle: {
+    flex: 1,
+    textAlign: 'center',
     fontSize: AppFont.titleLargeBold.size,
     fontFamily: AppFont.titleLargeBold.name,
     fontWeight: AppFont.titleLargeBold.weight,
