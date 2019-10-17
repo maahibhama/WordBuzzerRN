@@ -9,9 +9,19 @@ export default StyleSheet.create({
     flex: 1
   },
   topView: {
+    flexDirection: 'row',
     padding: 10,
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'flex-start'
+  },
+  instructionText:{
+    flex: 1,
+    textAlign: 'center',
+    fontSize: AppFont.titleExtraLargeBold.size,
+    fontFamily: AppFont.titleExtraLargeBold.name,
+    fontWeight: AppFont.titleExtraLargeBold.weight,
+    color: Color.themeBackground,
+    marginRight: 40
   },
   back: {
     tintColor: Color.themeBackground
