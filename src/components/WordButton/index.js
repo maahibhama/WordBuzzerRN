@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import styles from './styles'
 
 export default function WordButton (props) {
-  const newTextStyle = props.source != null ? { marginRight: 50 } : {}
+  const newTextStyle = props.source != null ? { marginRight: 45 } : {}
   return (
     <TouchableHighlight
       style={[styles.viewStyle, props.styles]}
