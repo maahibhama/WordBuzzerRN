@@ -112,6 +112,3 @@ const startGameButtonAction = ({ navigation, numberOfWord }) => {
     ])
   }
 }
-const selectedWordNumber = ({ numberOfWord }) => {
-  setNumberOfWord(numberOfWord)
-}
