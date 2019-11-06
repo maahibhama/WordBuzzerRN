@@ -13,6 +13,9 @@ export default function BuzzerView(props) {
   const rightWrongIcon = props.isRightAnswer
     ? Icons.checkRound
     : Icons.cancelRound;
+  const rightWrongIconStyle = props.isRightAnswer
+    ? { tintColor: 'lightgreen' }
+    : {};  
   const onTouch = () => {
     if (props.isEnable) {
       props.onTouch();
@@ -29,7 +32,7 @@ export default function BuzzerView(props) {
           }}
         />
         {props.showRightWrongSign && (
-          <Image source={rightWrongIcon} style={styles.checkedImage} />
+          <Image source={rightWrongIcon} style={[styles.checkedImage, rightWrongIconStyle]} />
         )}
         {props.isWinner && (
           <Image source={Icons.prize} style={styles.checkedImage} />

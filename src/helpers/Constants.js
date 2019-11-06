@@ -11,7 +11,46 @@ export const instructions = [
   '10. Pop will appear to confirm the translated word for picked English word when no user is able to guess the translation.',
   '11. As pop up disappear user can select the Next word to start again.',
   '12. After completion of the game. The winner will be shown on the winner screen with the score.',
-  "13. Users can also quit the game. The winner will announce according to the user's score."
-]
+  "13. Users can also quit the game. The winner will announce according to the user's score.",
+];
 
 export const wordsData = require('../resource/words.json');
+
+export const playerInfo = [
+  {
+    id: '1',
+    name: '1st Player',
+    score: '0',
+    selectedTime: 0,
+    isEnable: true,
+    isRight: false,
+    isWinner: false,
+  },
+  {
+    id: '2',
+    name: '2nd Player',
+    score: '0',
+    selectedTime: 0,
+    isEnable: true,
+    isRight: false,
+    isWinner: false,
+  },
+  {
+    id: '3',
+    name: '3rd Player',
+    score: '0',
+    selectedTime: 0,
+    isEnable: true,
+    isRight: false,
+    isWinner: false,
+  },
+  {
+    id: '4',
+    name: '4th Player',
+    score: '0',
+    selectedTime: 0,
+    isEnable: true,
+    isRight: false,
+    isWinner: false,
+  },
+];
