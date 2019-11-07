@@ -10,6 +10,7 @@ import WordButton from '../../components/WordButton';
 import Routes from '../../routes/Routes';
 import {getRandom, shuffle} from '../../helpers/Utility';
 import {playerInfo} from '../../helpers/Constants';
+import WordPopView from '../../components/WordPopView';
 
 export default function PlayGameView(props) {
   const [is1stSelected, setIs1stSelected] = useState(false);
@@ -38,7 +39,7 @@ export default function PlayGameView(props) {
     const index = currentSWIndex - 1;
     if (currentSWIndex > 0 && randomSelectedWordArray.length > index) {
       const checkingCondition = checkQuestionAnswer();
-      const isAllPlayerDisable = checkAllPlayerDisbale()
+      const isAllPlayerDisable = checkAllPlayerDisbale();
       if (checkingCondition == false && isAllPlayerDisable == false) {
         const spanishWord = randomSelectedWordArray[index];
         setCurrentSpanishWord(spanishWord);
@@ -47,7 +48,7 @@ export default function PlayGameView(props) {
         setIsTimerStart(false);
       }
     } else if (currentSWIndex == 6) {
-      checkQuestionAnswer()
+      checkQuestionAnswer();
       setShowRightWrongSign(true);
       setIsTimerStart(false);
     } else if (currentSWIndex > 0) {
@@ -64,7 +65,7 @@ export default function PlayGameView(props) {
       } else {
         window.clearInterval(timer);
       }
-    }, 5000);
+    }, 3000);
 
     return () => {
       // Return callback to run on unmount.
@@ -99,9 +100,20 @@ export default function PlayGameView(props) {
       setRandomCurrentWord();
       setCurrentSWIndex(0);
     } else {
-      props.navigation.navigate(Routes.WinnerView);
+      navigateToWinnerScreen();
     }
   };
+
+  const quitButtonAction = () => {
+    navigateToWinnerScreen();
+  };
+
+  function navigateToWinnerScreen() {
+    props.navigation.navigate(Routes.WinnerView, {
+      playerInfo: playersInfo,
+      numberOfQuestions: numberOfQuestion,
+    });
+  }
 
   function resetEverything() {
     setCurrentSpanishWord(null);
@@ -178,11 +190,11 @@ export default function PlayGameView(props) {
   }
 
   function checkAllPlayerDisbale() {
-    const filter = playersInfo.filter(element =>{
-      return (element.isEnable == false)
-    })
+    const filter = playersInfo.filter(element => {
+      return element.isEnable == false;
+    });
 
-    return (filter.length == 4)
+    return filter.length == 4;
   }
 
   function setNumberOfCount() {
@@ -218,6 +230,18 @@ export default function PlayGameView(props) {
 
   return (
     <BackgroundView>
+      {currentWord != null && (
+        <WordPopView
+          showAlert={showRightWrongSign}
+          noOfAnswers={currentQuestionNumber}
+          totalNoOfQuestion={numberOfQuestion}
+          onTouch={() => {
+            startButtonAction();
+          }}
+          englishWord={currentWord.text_eng}
+          spanishWord={currentWord.text_spa}
+        />
+      )}
       <SafeAreaView style={styles.mainContainer}>
         <View style={styles.topView}>
           <BuzzerView
@@ -278,7 +302,7 @@ export default function PlayGameView(props) {
             styles={styles.quitButton}
             textStyles={styles.startButtonText}
             onTouch={() => {
-              quitButtonAction({navigation: props.navigation});
+              quitButtonAction();
             }}
           />
         </View>
@@ -323,7 +347,3 @@ PlayGameView.navigationOptions = {
 PlayGameView.propTypes = {};
 
 PlayGameView.defaultProps = {};
-
-const quitButtonAction = ({navigation}) => {
-  navigation.navigate(Routes.WinnerView);
-};
